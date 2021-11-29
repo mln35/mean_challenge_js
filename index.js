@@ -1,0 +1,3 @@
+log = []
+
+fs = require('fs');
