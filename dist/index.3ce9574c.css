@@ -15,12 +15,12 @@
     padding: 10px 12px 10px 12px;
     border: 1px solid lightgrey;
     border-radius: 8px;
-    margin: 10px 5px 10px 5px;
-    /* width: 100%; */
+    margin: 10px 5px 10px 5px !important;
     box-sizing: border-box;
     color: #2C3E50;
     font-size: 16px;
-    letter-spacing: 1px
+    letter-spacing: 1px;
+    
   }
   
   input:focus,
@@ -32,7 +32,6 @@
     outline-width: 0;
     box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%) !important;
   }
-
   
   .logo img{
       width:100px;
@@ -135,10 +134,8 @@ table{
 tr{
   border-bottom: 1px solid blue;
 }
-tr td:first-child{
-  border-right: 3px solid white;
-}
-tr td:last-child{
+
+tr td{
   border-left: 3px solid white;
 }
 .hide{
@@ -152,5 +149,34 @@ tr td:last-child{
 }
 .nav a:hover{
   text-decoration: none;
+}
+#amount_debit_debit,#amount_debit_credit,#amount_credit_debit, #amount_credit_credit{
+  width:10%;
+}
+#id-account, #account-name{
+  width:20%;
+}
+#acount-form{
+  display: flex;
+  align-items: baseline;  
+}
+
+input[type="button"]{
+  width:auto;
+}
+iframe{
+  min-height: 400px;
+}
+tr td:first-child{
+  max-width:100px !important;
+}
+table{
+  min-width: 90%;
+}
+thead{
+  background-color: #245656;
+  display: table-header-group;
+  color: white;
+  /* padding-bottom: 20px !important; */
 }
 /*# sourceMappingURL=index.3ce9574c.css.map */

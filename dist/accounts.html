@@ -1,0 +1,38 @@
+
+    <link rel="stylesheet" href="/index.3ce9574c.css">
+    <link rel="stylesheet" href="/index.e2500a4f.css">
+
+    <form id="acount-form">
+      <label for="account-number">Code</label>
+      <input type="text" name="id-account" id="id-account" class="id-acount">
+      <label for="">Label</label>
+      <input type="text" name="account-name" id="account-name" class="account-name">
+      <label for="">Class</label>
+      <select class="class" name="class" id="class">
+        <option selected="" value="null" disabled="">Select Class</option>
+        <option>4 Tiers</option>
+        <option>5 Fournisseurs</option>
+      </select>
+      <input type="button" class="btn btn-primary" onclick="add()" value="ADD">
+
+    </form>
+
+    <br class="container">
+      <div id="empty">No account added yet</div>
+      <table id="table">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Label</th>
+            <th>Class</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+         
+        </tbody>
+      </table>
+    <br>
+    <button class="btn btn-danger clear" onclick="clearAll()"> Clear Accounts</button>
+    
+<script src="/logs.3ff7ede3.js"></script>     
+<script src="/accounts.4f401825.js"></script>

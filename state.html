@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="extrastyle.css" />
+<link rel="stylesheet" href="style.css" />
+
+<h3 class="sectionTitle">State</h3>
+
+<div id="empty"></div>
+
+<form>
+  <label for="first-date">First date</label>
+  <input type="date" name="first-date" id="dateInf" />
+  <label for="last-date">Last date</label>
+  <input type="date" name="last-date" id="dateSup" />
+  <label for="account">Account</label>
+  <select class="class" name="account" id="reportLabel">
+    <option selected value="null" disabled>Select Account</option>
+
+  </select>
+  <input type="button" class="btn btn-primary" onClick="getReport()" value="GO" />
+</form>
+
+<table id="table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Transaction Label</th>
+      <th>Debit</th>
+      <th>Credit</th>
+    </tr>
+  </thead>
+  <tbody id="tbody"></tbody>
+  <tr id="tr-total">
+    <td>Total</td>
+    <td></td>
+    <td id="totalDebit"></td>
+    <td id="totalCredit"></td>
+  </tr>
+  <tr id="tr-solde">
+    <td>Solde</td>
+    <td></td>
+    <td></td>
+    <td id="solde"></td>
+  </tr>
+</table>
+<!-- <div class="total"> <span>Total</span> <span id="totalValue"></span> </div> -->
+<script src="service.js"></script>
+<script src="state.js"></script>

@@ -6,83 +6,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/index.e2500a4f.css">
     <link rel="stylesheet" href="/index.3ce9574c.css">
-    
 
     <title>Comptabilité</title>
   </head>
   <body>
-    <div class="container">
-      <header class="header">
-        <div class="logo"><img src="/logo.50711fd8.png" alt=""></div>
+    <!-- <div class="container"> -->
+      <!-- <header class="header">
+        <div class="logo"><img src="./img/logo.png" alt="" /></div>
         <div class="title">
           <h1>Welcome to the MLN Company Accounting System</h1>
           <h2></h2>
         </div>
-      </header>
-      <div class="main">
-        <div class="nav">
+      </header> -->
+      <!-- <div class="main"> -->
+      <!-- <div class="nav">
           <ul>
-            <a href="/index.html"><li>Compte</li></a>
-            <a href="/logs.html"><li>Journal</li></a>
-            <a href="/account.html"><li>Extrait</li></a>
+            <a href="./index.html"><li>Compte</li></a>
+            <a href="./logs.html"><li>Journal</li></a>
+            <a href="./account.html"><li>Extrait</li></a>
           </ul>
-        </div>
-        <div class="content">
-          <form>
-            <div class="transinfo">
-                <label for="date">Transaction date</label>
-                <input type="date" name="date" id="date">
-                <label for="">Transaction object</label>
-                <input type="text" name="object" id="object">
-            </div>  
-            <div>
-                <label for="code">Code</label>
-                <input type="text" name="code" id="code">
-                <label for="">Label</label>
-                <input type="text" name="label" id="label">
-                <label for="">Debit</label>
-                <input type="text" name="debit1" id="debit1" class="amount">
-                <label for="">Credit</label>
-                <input type="text" name="credit1" id="credit1" class="amount">
-            </div>
-            <div>
-                <label for="code2">Code</label>
-                <input type="text" name="code2" id="code2">
-                <label for="">Label</label>
-                <input type="text" name="label" id="label2">
-                <label for="">Debit</label>
-                <input type="text" name="debit2" id="debit2" class="amount">
-                <label for="">Credit</label>
-                <input type="text" name="credit2" id="credit2" class="amount">
-            </div>
-            <!-- <label for="date"></label> -->
-            <!-- <input type="date" name="birthdate"> -->
-            <input type="button" class="btn btn-primary" onclick="addTransaction()" value="ADD">
-          </form>
+        </div> -->
+      <!-- <div class="content"> -->
+      <form>
+        <div class="transinfo">
+          <label for="date">Transaction date</label>
+          <input type="date" name="date" id="date">
 
-          <br class="container">
-            <div id="empty"></div>
-            <table id="table">
-              <thead>
-                <tr>
-                  <th>Transaction date</th>
-                  <th>Account code(debit)</th>
-                  <th>Account code(credit)</th>
-                  <th>Transaction object</th>
-                  <th>Debit</th>
-                  <th>Credit</th>
-                </tr>
-              </thead>
-              <tbody id="tbody">
-               
-              </tbody>
-            </table>
-          <br>
-          <button class="btn btn-danger clear" onclick="clearAll()"> Clear Accounts</button>
-          </div>
+          <label for="">Transaction object</label>
+          <input type="text" name="object" id="object">
         </div>
+        <div>
+          <label for="code">Code</label>
+          <input type="text" name="code" id="code_debit">
+
+          <label for="">Label</label>
+          <input type="text" name="label" id="label_debit">
+
+          <label for="amount_debit_debit">Debit</label>
+          <input type="text" name="amount_debit_debit" id="amount_debit_debit" class="amount">
+
+          <label for="">Credit</label>
+          <input type="text" name="credit1" id="amount_debit_credit" class="amount">
+        </div>
+        <div>
+          <label for="code_credit">Code</label>
+          <input type="text" name="code_credit" id="code_credit">
+          <label for="">Label</label>
+          <input type="text" name="label_credit" id="label_credit">
+          <label for="">Debit</label>
+          <input type="text" name="debit2" id="amount_credit_debit" class="amount">
+          <label for="">Credit</label>
+          <input type="text" name="credit2" id="amount_credit_credit" class="amount">
+          <input type="button" class="btn btn-primary" onclick="tAdd()" value="ADD">
+        </div>
+        <!-- <label for="date"></label> -->
+        <!-- <input type="date" name="birthdate"> -->
+      </form>
+
+      <br class="container">
+      <div id="empty">"No log saved yet"</div>
+      <table id="table">
+        <thead>
+          <tr>
+            <th>Transaction date</th>
+            <th>Account code(debit)</th>
+            <th>Account code(credit)</th>
+            <th>Transaction object</th>
+            <th>Debit</th>
+            <th>Credit</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+      <br>
+      <button class="btn btn-danger clear" onclick="clearAll()">
+        Clear Accounts
+      </button>
+    <!-- </div> -->
+    <!-- </div>
       </div>
-    
-    <script src="/index.c5d2dfee.js"></script>
+    </div> -->
+    <script src="/logs.3ff7ede3.js"></script>
+    <script src="/logs.f30d9678.js"></script>
   </body>
 </html>
