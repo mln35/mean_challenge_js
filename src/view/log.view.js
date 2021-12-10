@@ -1,6 +1,5 @@
-const { getElementValue } = require("../shared");
-// const { saveLog } = require("../storage/log.storage");
-import logStorage, { clearTransactions } from "../storage/log.storage";
+const { getElementValue } = require("../shared/shared");
+import logStorage from "../storage/log.storage";
 
 logs = [];
 
@@ -53,7 +52,6 @@ renderTransactions = () => {
       tbody.appendChild(tr);
     }
   } else {
-    // container = document.querySelector('.container');
     thead.style.display = "none";
     btn.style.display = "none";
     tbody.innerHTML = "";
@@ -62,14 +60,11 @@ renderTransactions = () => {
 };
 
 addLog = () => {
-  console.log("tAdd()");
   date = getElementValue("#date");
   code_debit = getElementValue("#code_debit");
   code_credit = getElementValue("#code_credit");
   label_debit = getElementValue("#label_debit");
   label_credit = getElementValue("#label_credit");
-  // class_debit = getElementValue('#class_debit');
-  // class_credit = getElementValue('#class_credit');
   amount_debit_debit = getElementValue("#amount_debit_debit");
   amount_debit_credit = getElementValue("#amount_debit_credit");
   amount_credit_debit = getElementValue("#amount_credit_debit");
@@ -99,7 +94,6 @@ clearJournal = () => {
 initView = () => {
   let l = logStorage.loadTransactions();
   logs = l.list;
-  // console.log('logs  ',logs);
 };
 initView();
 renderTransactions();

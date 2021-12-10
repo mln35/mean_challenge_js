@@ -460,10 +460,9 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"9SZrL":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-// const { saveLog } = require("../storage/log.storage");
 var _logStorage = require("../storage/log.storage");
 var _logStorageDefault = parcelHelpers.interopDefault(_logStorage);
-const { getElementValue  } = require("../shared");
+const { getElementValue  } = require("../shared/shared");
 logs = [];
 let table = document.querySelector("#table");
 let thead = document.querySelector("thead");
@@ -509,7 +508,6 @@ renderTransactions = ()=>{
             tbody.appendChild(tr);
         }
     } else {
-        // container = document.querySelector('.container');
         thead.style.display = "none";
         btn.style.display = "none";
         tbody.innerHTML = "";
@@ -517,14 +515,11 @@ renderTransactions = ()=>{
     }
 };
 addLog = ()=>{
-    console.log("tAdd()");
     date = getElementValue("#date");
     code_debit = getElementValue("#code_debit");
     code_credit = getElementValue("#code_credit");
     label_debit = getElementValue("#label_debit");
     label_credit = getElementValue("#label_credit");
-    // class_debit = getElementValue('#class_debit');
-    // class_credit = getElementValue('#class_credit');
     amount_debit_debit = getElementValue("#amount_debit_debit");
     amount_debit_credit = getElementValue("#amount_debit_credit");
     amount_credit_debit = getElementValue("#amount_credit_debit");
@@ -540,25 +535,11 @@ clearJournal = ()=>{
 initView = ()=>{
     let l = _logStorageDefault.default.loadTransactions();
     logs = l.list;
-// console.log('logs  ',logs);
 };
 initView();
 renderTransactions();
 
-},{"../shared":"jBc7J","../storage/log.storage":"6CjCk","@parcel/transformer-js/src/esmodule-helpers.js":"eQa2e"}],"jBc7J":[function(require,module,exports) {
-exports.getElementValue = function(element) {
-    console.log(element);
-    let val = document.querySelector(element).value;
-    console.log(val);
-    if (val) return val;
-    return "";
-};
-val = function(raw) {
-    if (raw) return raw;
-    else return "";
-};
-
-},{}],"6CjCk":[function(require,module,exports) {
+},{"../storage/log.storage":"6CjCk","@parcel/transformer-js/src/esmodule-helpers.js":"eQa2e","../shared/shared":"8FSSX"}],"6CjCk":[function(require,module,exports) {
 t_key = "my-transaction-key-number-";
 count_key = "all-transactions-count-key";
 exports.loadTransactions = ()=>{
@@ -591,8 +572,6 @@ exports.saveLog = (_date, _code_deb, _code_cred, _label_deb, _label_cred, _amoun
         amount_credit_credit: _amount_credit_credit,
         object: _object
     };
-    // trans.push(source);
-    // trans.push(target);
     localStorage.setItem(t_key + t_count++, JSON.stringify(source));
     localStorage.setItem(t_key + t_count++, JSON.stringify(target));
     localStorage.setItem(count_key, t_count);
@@ -631,6 +610,17 @@ exports.export = function(dest, destName, get) {
         enumerable: true,
         get: get
     });
+};
+
+},{}],"8FSSX":[function(require,module,exports) {
+exports.getElementValue = function(element) {
+    let val = document.querySelector(element).value;
+    if (val) return val;
+    return "";
+};
+val = function(v) {
+    if (v) return v;
+    else return "";
 };
 
 },{}]},["3gagN","9SZrL"], "9SZrL", "parcelRequire94c2")

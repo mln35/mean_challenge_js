@@ -460,20 +460,24 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"3qrtl":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-// const { saveLog } = require("../storage/log.storage");
 var _logStorage = require("../storage/log.storage");
 var _logStorageDefault = parcelHelpers.interopDefault(_logStorage);
 var _accountStorage = require("../storage/account.storage");
 var _accountStorageDefault = parcelHelpers.interopDefault(_accountStorage);
-const { getElementValue  } = require("../shared");
-let l = _logStorageDefault.default.loadTransactions();
-trans = l.list;
-let m = _accountStorageDefault.default.loadAccounts();
-accounts = m.list;
+const { getElementValue  } = require("../shared/shared");
+let logs = [];
+let accounts = [];
+init = ()=>{
+    let tr = _logStorageDefault.default.loadTransactions();
+    logs = tr.list;
+    let ac = _accountStorageDefault.default.loadAccounts();
+    accounts = ac.list;
+    let optionList = document.querySelector("#reportLabel").options;
+    accounts.forEach((a)=>optionList.add(new Option(a.label, a.label, false))
+    );
+};
 document.querySelector("table").style.display = "none";
 renderReport = (start, end, label)=>{
-    console.log('st', start);
-    console.log(end);
     let account = document.querySelector("#account");
     let thead = document.querySelector("thead");
     let tbody = document.querySelector("#tbody");
@@ -481,21 +485,17 @@ renderReport = (start, end, label)=>{
     let totalDebit = 0;
     let totalCredit = 0;
     let solde = 0;
-    let relevant = trans.filter((el)=>Date(el.date) > start
+    let relevant = logs.filter((el)=>Date(el.date) > start
     );
     console.table(relevant);
-    if (trans && trans.length > 0) {
+    if (logs.length > 0) {
         thead.style.display = "table-header-group";
-        // document.querySelector("#tr-total").style.display = "table-row"
-        // document.querySelector("#tr-solde").style.display = "table-row"
         let num = 0;
         tbody.innerHTML = "";
-        for(let i = 0; i < trans.length; i++){
-            const rec = trans[i];
+        for(let i = 0; i < logs.length; i++){
+            const rec = logs[i];
             let dateTrans = new Date(rec.date);
-            console.log(label, rec.label_debit, rec.label_credit);
             if (dateTrans > start && dateTrans < end && (rec.label_debit === label || rec.label_credit === label)) {
-                console.log('poi', dateTrans);
                 tr = document.createElement("tr");
                 date_td = document.createElement("td");
                 label_td = document.createElement("td");
@@ -527,49 +527,8 @@ renderReport = (start, end, label)=>{
                 document.querySelector("table").style.display = "table";
             }
         }
-    /* for (let i = 0; i < trans.length; i += 2) {
-      const l_debit = trans[i];
-      const l_credit = trans[i + 1];
-      let dateDeb = new Date(l_debit.date)
-      let dateCred = new Date(l_credit.date);
-      console.log('poi',dateDeb)
-      console.log('poi',dateCred);
-      tr = document.createElement("tr");
-      date_td = document.createElement("td");
-      label_td = document.createElement("td");
-      debit_td = document.createElement("td");
-      credit_td = document.createElement("td");
-
-      date_td.innerHTML = l_debit.date;
-      label_td.innerHTML = l_debit.object;
-
-      if (l_debit.amount_debit_debit) {
-        debit_td.innerHTML = l_debit.amount_debit_debit;
-        credit_td.innerHTML = l_credit.amount_credit_credit;
-
-        totalDebit += +l_debit.amount_debit_debit;
-        totalCredit += +l_credit.amount_credit_credit;
-        console.log(":)", totalDebit);
-        tr.classList.add("even-row");
-      } else {
-        debit_td.innerHTML = l_credit.amount_credit_debit;
-        credit_td.innerHTML = l_debit.amount_debit_credit;
-
-        // totalDebit += +l_debit.amount_credit_debit;
-        // totalCredit += +l_credit.amount_debit_credit;
-      }
-
-      tr.appendChild(date_td);
-      tr.appendChild(label_td);
-      tr.appendChild(debit_td);
-      tr.appendChild(credit_td);
-      num++;
-      tbody.appendChild(tr);
-    } */ } else {
-        // container = document.querySelector('.container');
-        // thead.style.display = "none";
+    } else {
         document.querySelector("table").style.display = "none";
-        // tbody.innerHTML = "";
         empty = document.querySelector("#empty");
         empty.innerHTML = "No log saved yet";
     }
@@ -578,38 +537,15 @@ renderReport = (start, end, label)=>{
     document.querySelector("#solde").innerHTML = totalDebit - totalCredit;
 };
 getReport = function() {
-    console.log('get rep');
+    init();
     let dateInf = new Date(getElementValue("#dateInf"));
     let dateSup = new Date(getElementValue("#dateSup"));
     let reportLabel = getElementValue("#reportLabel");
-    console.log(dateInf);
-    console.log(dateSup);
-    if (dateInf && dateSup && dateInf < dateSup) {
-        renderReport(dateInf, dateSup, reportLabel);
-        console.log("ok");
-    }
+    if (dateInf && dateSup && dateInf < dateSup) renderReport(dateInf, dateSup, reportLabel);
 };
-loadAccounts();
-loadTransactions();
-getReport();
-let optionList = document.querySelector('#reportLabel').options;
-accounts.forEach((a)=>optionList.add(new Option(a.label, a.label, false))
-);
+init();
 
-},{"../shared":"jBc7J","../storage/log.storage":"6CjCk","../storage/account.storage":"dv90y","@parcel/transformer-js/src/esmodule-helpers.js":"eQa2e"}],"jBc7J":[function(require,module,exports) {
-exports.getElementValue = function(element) {
-    console.log(element);
-    let val = document.querySelector(element).value;
-    console.log(val);
-    if (val) return val;
-    return "";
-};
-val = function(raw) {
-    if (raw) return raw;
-    else return "";
-};
-
-},{}],"6CjCk":[function(require,module,exports) {
+},{"../storage/log.storage":"6CjCk","../storage/account.storage":"dv90y","@parcel/transformer-js/src/esmodule-helpers.js":"eQa2e","../shared/shared":"8FSSX"}],"6CjCk":[function(require,module,exports) {
 t_key = "my-transaction-key-number-";
 count_key = "all-transactions-count-key";
 exports.loadTransactions = ()=>{
@@ -642,8 +578,6 @@ exports.saveLog = (_date, _code_deb, _code_cred, _label_deb, _label_cred, _amoun
         amount_credit_credit: _amount_credit_credit,
         object: _object
     };
-    // trans.push(source);
-    // trans.push(target);
     localStorage.setItem(t_key + t_count++, JSON.stringify(source));
     localStorage.setItem(t_key + t_count++, JSON.stringify(target));
     localStorage.setItem(count_key, t_count);
@@ -669,11 +603,7 @@ exports.saveAccount = (_code, _label, _class)=>{
 exports.loadAccounts = ()=>{
     let nb = localStorage.getItem(accounts_count_key);
     let tmpList = [];
-    console.log('nb ', nb);
-    if (nb) for(i = 0; i < nb; i++){
-        console.log(JSON.parse(localStorage.getItem(accounts_value_key + i)));
-        tmpList.push(JSON.parse(localStorage.getItem(accounts_value_key + i)));
-    }
+    if (nb) for(i = 0; i < nb; i++)tmpList.push(JSON.parse(localStorage.getItem(accounts_value_key + i)));
     else nb = 0;
     return {
         count: nb,
@@ -714,6 +644,17 @@ exports.export = function(dest, destName, get) {
         enumerable: true,
         get: get
     });
+};
+
+},{}],"8FSSX":[function(require,module,exports) {
+exports.getElementValue = function(element) {
+    let val = document.querySelector(element).value;
+    if (val) return val;
+    return "";
+};
+val = function(v) {
+    if (v) return v;
+    else return "";
 };
 
 },{}]},["61WSw","3qrtl"], "3qrtl", "parcelRequire94c2")

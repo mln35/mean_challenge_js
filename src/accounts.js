@@ -1,2 +1,0 @@
-loadAccounts();
-renderAccounts();

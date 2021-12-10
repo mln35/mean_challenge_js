@@ -45,8 +45,7 @@ exports.saveLog = (
       amount_credit_credit: _amount_credit_credit,
       object: _object,
     };
-    // trans.push(source);
-    // trans.push(target);
+    
     localStorage.setItem(t_key + t_count++, JSON.stringify(source));
     localStorage.setItem(t_key + t_count++, JSON.stringify(target));
     localStorage.setItem(count_key, t_count);

@@ -460,29 +460,28 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"h7wJN":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _shared = require("../shared");
+var _shared = require("../shared/shared");
 var _accountStorage = require("../storage/account.storage");
 var _accountStorageDefault = parcelHelpers.interopDefault(_accountStorage);
 accountList = [];
 renderAccounts = ()=>{
     initView();
-    table = document.querySelector('table');
+    table = document.querySelector("table");
     thead = document.querySelector("thead");
     tbody = document.querySelector("tbody");
     btn = document.querySelector(".btn.clear");
-    empty = document.querySelector('#empty');
-    if (accountList && accountList.length > 0) {
-        console.log("object", accountList);
+    empty = document.querySelector("#empty");
+    if (accountList.length > 0) {
         thead.style.display = "table-header-group";
         btn.style.display = "block";
         empty.style.display = "none";
         let num = 0;
-        tbody.innerHTML = '';
+        tbody.innerHTML = "";
         for (l of accountList){
-            let tr = document.createElement('tr');
-            code_td = document.createElement('td');
-            label_td = document.createElement('td');
-            class_td = document.createElement('td');
+            let tr = document.createElement("tr");
+            code_td = document.createElement("td");
+            label_td = document.createElement("td");
+            class_td = document.createElement("td");
             code_td.innerHTML = l.code;
             label_td.innerHTML = l.label;
             class_td.innerHTML = l.class;
@@ -494,17 +493,16 @@ renderAccounts = ()=>{
             tbody.appendChild(tr);
         }
     } else {
-        // container = document.querySelector('.container');
-        tbody.innerHTML = '';
+        tbody.innerHTML = "";
         empty.style.display = "block";
         thead.style.display = "none";
         btn.style.display = "none";
     }
 };
 addAccount = ()=>{
-    let _code = _shared.getElementValue('#id-account');
-    let _label = _shared.getElementValue('#account-name');
-    let _class = _shared.getElementValue('#class');
+    let _code = _shared.getElementValue("#id-account");
+    let _label = _shared.getElementValue("#account-name");
+    let _class = _shared.getElementValue("#class");
     _accountStorageDefault.default.saveAccount(_code, _label, _class);
     renderAccounts();
 };
@@ -515,24 +513,11 @@ clearAccounts = ()=>{
 initView = ()=>{
     let m = _accountStorageDefault.default.loadAccounts();
     accountList = m.list;
-    console.log(accountList);
-} // initView();
-;
-
-},{"../shared":"jBc7J","../storage/account.storage":"dv90y","@parcel/transformer-js/src/esmodule-helpers.js":"eQa2e"}],"jBc7J":[function(require,module,exports) {
-exports.getElementValue = function(element) {
-    console.log(element);
-    let val = document.querySelector(element).value;
-    console.log(val);
-    if (val) return val;
-    return "";
 };
-val = function(raw) {
-    if (raw) return raw;
-    else return "";
-};
+initView();
+renderAccounts();
 
-},{}],"dv90y":[function(require,module,exports) {
+},{"../storage/account.storage":"dv90y","@parcel/transformer-js/src/esmodule-helpers.js":"eQa2e","../shared/shared":"8FSSX"}],"dv90y":[function(require,module,exports) {
 accounts_value_key = "my-account-key-number-";
 accounts_count_key = "all-accounts-count-key";
 exports.saveAccount = (_code, _label, _class)=>{
@@ -547,11 +532,7 @@ exports.saveAccount = (_code, _label, _class)=>{
 exports.loadAccounts = ()=>{
     let nb = localStorage.getItem(accounts_count_key);
     let tmpList = [];
-    console.log('nb ', nb);
-    if (nb) for(i = 0; i < nb; i++){
-        console.log(JSON.parse(localStorage.getItem(accounts_value_key + i)));
-        tmpList.push(JSON.parse(localStorage.getItem(accounts_value_key + i)));
-    }
+    if (nb) for(i = 0; i < nb; i++)tmpList.push(JSON.parse(localStorage.getItem(accounts_value_key + i)));
     else nb = 0;
     return {
         count: nb,
@@ -592,6 +573,17 @@ exports.export = function(dest, destName, get) {
         enumerable: true,
         get: get
     });
+};
+
+},{}],"8FSSX":[function(require,module,exports) {
+exports.getElementValue = function(element) {
+    let val = document.querySelector(element).value;
+    if (val) return val;
+    return "";
+};
+val = function(v) {
+    if (v) return v;
+    else return "";
 };
 
 },{}]},["fXI6W","h7wJN"], "h7wJN", "parcelRequire94c2")
