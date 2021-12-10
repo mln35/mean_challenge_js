@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/index.e2500a4f.css">
-    <link rel="stylesheet" href="/index.3ce9574c.css">
 
-    <title>Comptabilité</title>
-  </head>
-  <body>
+    <link rel="stylesheet" href="/index.a57241e8.css">
+    <link rel="stylesheet" href="/index.49f165ae.css">
+
+    <h3 class="sectionTitle">Manage Transactions</h3>
+
     <!-- <div class="container"> -->
       <!-- <header class="header">
         <div class="logo"><img src="./img/logo.png" alt="" /></div>
@@ -35,12 +29,15 @@
           <label for="">Transaction object</label>
           <input type="text" name="object" id="object">
         </div>
-        <div>
+        <div class="trans-account">
           <label for="code">Code</label>
           <input type="text" name="code" id="code_debit">
 
           <label for="">Label</label>
           <input type="text" name="label" id="label_debit">
+          <!-- <select class="class" name="account" id="label_debit">
+            <option selected value="null" disabled>Select Account</option>
+          </select> -->
 
           <label for="amount_debit_debit">Debit</label>
           <input type="text" name="amount_debit_debit" id="amount_debit_debit" class="amount">
@@ -48,16 +45,19 @@
           <label for="">Credit</label>
           <input type="text" name="credit1" id="amount_debit_credit" class="amount">
         </div>
-        <div>
+        <div class="trans-account">
           <label for="code_credit">Code</label>
           <input type="text" name="code_credit" id="code_credit">
           <label for="">Label</label>
           <input type="text" name="label_credit" id="label_credit">
+          <!-- <select class="class" name="account" id="label_credit">
+            <option selected value="null" disabled>Select Account</option>
+          </select> -->
           <label for="">Debit</label>
           <input type="text" name="debit2" id="amount_credit_debit" class="amount">
           <label for="">Credit</label>
           <input type="text" name="credit2" id="amount_credit_credit" class="amount">
-          <input type="button" class="btn btn-primary" onclick="tAdd()" value="ADD">
+          <input type="button" class="btn btn-primary" onclick="addLog()" value="ADD">
         </div>
         <!-- <label for="date"></label> -->
         <!-- <input type="date" name="birthdate"> -->
@@ -79,14 +79,11 @@
         <tbody id="tbody"></tbody>
       </table>
       <br>
-      <button class="btn btn-danger clear" onclick="clearAll()">
+      <button class="btn btn-danger clear" onclick="clearJournal()">
         Clear Accounts
       </button>
     <!-- </div> -->
     <!-- </div>
       </div>
     </div> -->
-    <script src="/logs.3ff7ede3.js"></script>
-    <script src="/logs.f30d9678.js"></script>
-  </body>
-</html>
+    <script src="/logs.662b8c13.js" defer=""></script>

@@ -1,81 +1,14 @@
 
-/*
-console.log(trans);
-renderReport = () => {
-  let dateInf = getValue("#dateInf");
-  let dateSup = getValue("#dateSup");
-  
-  console.log(dateInf);
-  console.log(dateSup);
-  let account = document.querySelector("#account");
-  let thead = document.querySelector("thead");
-  let tbody = document.querySelector("#tbody");
-  empty = document.querySelector("#empty");
-  let totalDebit = 0;
-  let totalCredit = 0;
-  let solde = 0;
-  if (trans && trans.length > 0) {
-    thead.style.display = "table-header-group";
-    let num = 0;
-    tbody.innerHTML = "";
+const { getElementValue } = require("../shared");
+// const { saveLog } = require("../storage/log.storage");
+import logStorage, { clearTransactions } from "../storage/log.storage";
+import account from "../storage/account.storage"
 
-    for (let i = 0; i < trans.length; i += 2) {
-      const l_debit = trans[i];
-      const l_credit = trans[i + 1];
-      tr = document.createElement("tr");
-      date_td = document.createElement("td");
-      label_td = document.createElement("td");
-      debit_td = document.createElement("td");
-      credit_td = document.createElement("td");
+let l = logStorage.loadTransactions();
+trans = l.list;
+let m = account.loadAccounts();
+accounts = m.list;
 
-      date_td.innerHTML = l_debit.date;
-      label_td.innerHTML = l_debit.object;
-
-      if (l_debit.amount_debit_debit) {
-        debit_td.innerHTML = l_debit.amount_debit_debit;
-        credit_td.innerHTML = l_credit.amount_credit_credit;
-        
-        totalDebit += +l_debit.amount_debit_debit;
-        totalCredit += +l_credit.amount_credit_credit;
-        console.log(":)", totalDebit);
-        tr.classList.add("even-row");
-      } else {
-        debit_td.innerHTML = l_credit.amount_credit_debit;
-        credit_td.innerHTML = l_debit.amount_debit_credit;
-
-        // totalDebit += +l_debit.amount_credit_debit;
-        // totalCredit += +l_credit.amount_debit_credit;
-      }
-
-      tr.appendChild(date_td);
-      tr.appendChild(label_td);
-      tr.appendChild(debit_td);
-      tr.appendChild(credit_td);
-      num++;
-      tbody.appendChild(tr);
-    }
-  } else {
-    // container = document.querySelector('.container');
-    thead.style.display = "none";
-    tbody.innerHTML = "";
-    empty = document.querySelector("#empty");
-    empty.innerHTML = "No log saved yet";
-  }
-  document.querySelector("#totalDebit").innerHTML= totalDebit;
-  document.querySelector("#totalCredit").innerHTML = totalCredit;
-  document.querySelector("#solde").innerHTML = totalDebit - totalCredit;
-};
-
-getReport = function(){
-
-}
-
-
-loadTransactions();
-renderReport();
-
-*/
-console.log(trans);
 document.querySelector("table").style.display = "none";
 
 renderReport = (start, end,label) => {
@@ -202,9 +135,9 @@ renderReport = (start, end,label) => {
 
 getReport = function () {
   console.log('get rep');
-  let dateInf = new Date(getValue("#dateInf"));
-  let dateSup = new Date(getValue("#dateSup"));
-  let reportLabel = getValue("#reportLabel");
+  let dateInf = new Date(getElementValue("#dateInf"));
+  let dateSup = new Date(getElementValue("#dateSup"));
+  let reportLabel = getElementValue("#reportLabel");
   console.log(dateInf);
   console.log(dateSup);
   if (dateInf && dateSup && dateInf < dateSup) {

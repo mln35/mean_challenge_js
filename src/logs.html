@@ -80,7 +80,7 @@
           <input
             type="button"
             class="btn btn-primary"
-            onClick="tAdd()"
+            onClick="addLog()"
             value="ADD"
           />
         </div>
@@ -104,12 +104,11 @@
         <tbody id="tbody"></tbody>
       </table>
       <br />
-      <button class="btn btn-danger clear" onClick="clearAll()">
+      <button class="btn btn-danger clear" onClick="clearJournal()">
         Clear Accounts
       </button>
     <!-- </div> -->
     <!-- </div>
       </div>
     </div> -->
-    <script src="service.js"></script>
-    <script src="log.js"></script>
+    <script type="module" src="view/log.view.js"></script>

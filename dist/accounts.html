@@ -1,19 +1,24 @@
 
-    <link rel="stylesheet" href="/index.3ce9574c.css">
-    <link rel="stylesheet" href="/index.e2500a4f.css">
-
+    <link rel="stylesheet" href="/index.49f165ae.css">
+    <link rel="stylesheet" href="/index.a57241e8.css">
+<h3 class="sectionTitle">Manage Accounts</h3>
     <form id="acount-form">
       <label for="account-number">Code</label>
-      <input type="text" name="id-account" id="id-account" class="id-acount">
+      <input type="text" name="id-account" id="id-account" class="id-account">
       <label for="">Label</label>
       <input type="text" name="account-name" id="account-name" class="account-name">
       <label for="">Class</label>
       <select class="class" name="class" id="class">
         <option selected="" value="null" disabled="">Select Class</option>
-        <option>4 Tiers</option>
-        <option>5 Fournisseurs</option>
+        <option value="1 Ressources">1 Ressources</option>
+        <option value="2 Aactif immobilisé">2 Aactif immobilisé </option>
+        <option value="3 Stock">3 Stock</option>
+        <option value="4 Tiers">4 Tiers</option>
+        <option value="5 Fournisseur">5 Fournisseur</option>
+        <option value="6 Charges">6	Charges</option>
+        <option value="7 Produits">7 Produits</option>
       </select>
-      <input type="button" class="btn btn-primary" onclick="add()" value="ADD">
+      <input type="button" class="btn btn-primary" onclick="addAccount()" value="ADD">
 
     </form>
 
@@ -32,7 +37,7 @@
         </tbody>
       </table>
     <br>
-    <button class="btn btn-danger clear" onclick="clearAll()"> Clear Accounts</button>
+    <button class="btn btn-danger clear" onclick="clearAccounts()"> Clear Accounts</button>
     
-<script src="/logs.3ff7ede3.js"></script>     
-<script src="/accounts.4f401825.js"></script>
+<script src="/accounts.dd1d909a.js" defer=""></script>     
+<!-- <script src="accounts.js"></script> -->

@@ -13,4 +13,4 @@ renderTransactions(); // let debitOptionList = document.querySelector('#label_de
  //   )
  // );
 
-//# sourceMappingURL=logs.f30d9678.js.map
+//# sourceMappingURL=logs.fd2bb7fd.js.map

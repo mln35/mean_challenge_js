@@ -1,0 +1,2 @@
+loadAccounts();
+renderAccounts();

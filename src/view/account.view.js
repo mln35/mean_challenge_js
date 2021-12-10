@@ -1,25 +1,25 @@
 
-getValue = function (element) {
-    console.debug();
-    val = document.querySelector(element).value;
-    if (val) return val;
-    return "";
-  };
+import { getElementValue } from "../shared";
+import account from "../storage/account.storage"
+accountList = [];
 
-render = () => {
-    table = document.querySelector('#table');
+renderAccounts = () => {
+    initView();
+    table = document.querySelector('table');
     thead = document.querySelector("thead");
-    tbody = document.querySelector("#tbody");
+    tbody = document.querySelector("tbody");
     btn = document.querySelector(".btn.clear")
     empty = document.querySelector('#empty');
 
-    if(accounts && accounts.length > 0){
+    if(accountList && accountList.length > 0){
+        console.log("object",accountList);
+
         thead.style.display = "table-header-group";
         btn.style.display = "block"
         empty.style.display= "none";
         let num = 0;
         tbody.innerHTML = '';
-        for (l of accounts){
+        for (l of accountList){
             let tr = document.createElement('tr');
             code_td = document.createElement('td');
             label_td = document.createElement('td');
@@ -42,37 +42,25 @@ render = () => {
         thead.style.display = "none";
         btn.style.display = "none"
     }
-
-}
-
-// fs = require('fs');
-add = () => {
-    console.log('add');
-    // table = document.querySelector('.table');
-    let _code = getValue('.id-acount');
-    let _label = getValue('.account-name');
-    let _class = getValue('.class');
-    console.log('code: ',_code, 'label: ',_label,'class: ', _class)
-    
-    addAccount(_code, _label, _class)
-    render(accounts);
-}
-
-addAccount = (_code,_label,_class) =>{
-    accounts.push({code:_code,label:_label,class:_class})
-    localStorage.setItem(accounts_value_key+count++,JSON.stringify({code:_code,label:_label,class:_class}))
-    localStorage.setItem(accounts_count_key,count);
-    
-    console.table(accounts);
 }
 
 
-clearAll = () => {
-    count = 0;
-    accounts = [];
-    localStorage.clear();
-    render();
+addAccount = () => {
+    let _code = getElementValue('#id-account');
+    let _label = getElementValue('#account-name');
+    let _class = getElementValue('#class');
+    account.saveAccount(_code, _label, _class);
+    renderAccounts();
 }
 
-loadAccounts();
-render();
+clearAccounts =()=>{
+    account.clearAccounts();
+    renderAccounts();
+}
+
+initView = ()=>{
+    let m = account.loadAccounts();
+    accountList = m.list;
+    console.log(accountList);
+}
+// initView();
