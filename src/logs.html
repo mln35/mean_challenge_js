@@ -1,89 +1,60 @@
+<link rel="stylesheet" href="extrastyle.css" />
+<link rel="stylesheet" href="style.css" />
 
-    <link rel="stylesheet" href="extrastyle.css" />
-    <link rel="stylesheet" href="style.css" />
+<h3 class="sectionTitle">Manage Transactions</h3>
 
-    <h3 class="sectionTitle">Manage Transactions</h3>
-      
-      <form>
-        <div class="transinfo">
-          <label for="date">Transaction date</label>
-          <input type="date" name="date" id="date" />
+<form>
+  <div class="transinfo">
+    <label for="date">Transaction date</label>
+    <input type="date" name="date" id="date" />
 
-          <label for="">Transaction object</label>
-          <input type="text" name="object" id="object" />
-        </div>
-        <div class = "trans-account">
-          <label for="code">Code</label>
-          <input type="text" name="code" id="code_debit" />
+    <label for="">Transaction object</label>
+    <input type="text" name="object" id="object" />
+  </div>
+  <div class="trans-account">
+    <label for="code">Code</label>
+    <input type="text" name="code" id="code_debit" />
 
-          <label for="">Label</label>
-          <input type="text" name="label" id="label_debit" />
+    <label for="">Label</label>
+    <input type="text" name="label" id="label_debit" />
 
-          <label for="amount_debit_debit">Debit</label>
-          <input
-            type="text"
-            name="amount_debit_debit"
-            id="amount_debit_debit"
-            class="amount"
-          />
+    <label for="amount_debit_debit">Debit</label>
+    <input type="text" name="amount_debit_debit" id="amount_debit_debit" class="amount" />
 
-          <label for="">Credit</label>
-          <input
-            type="text"
-            name="credit1"
-            id="amount_debit_credit"
-            class="amount"
-          />
-        </div>
-        <div class = "trans-account">
-          <label for="code_credit">Code</label>
-          <input type="text" name="code_credit" id="code_credit" />
-          <label for="">Label</label>
-          <input type="text" name="label_credit" id="label_credit" />
+    <label for="">Credit</label>
+    <input type="text" name="credit1" id="amount_debit_credit" class="amount" />
+  </div>
+  <div class="trans-account">
+    <label for="code_credit">Code</label>
+    <input type="text" name="code_credit" id="code_credit" />
+    <label for="">Label</label>
+    <input type="text" name="label_credit" id="label_credit" />
 
-          <label for="">Debit</label>
-          <input
-            type="text"
-            name="debit2"
-            id="amount_credit_debit"
-            class="amount"
-          />
-          <label for="">Credit</label>
-          <input
-            type="text"
-            name="credit2"
-            id="amount_credit_credit"
-            class="amount"
-          />
-          <input
-            type="button"
-            class="btn btn-primary"
-            onClick="addLog()"
-            value="ADD"
-          />
-        </div>
-        
-        
-      </form>
+    <label for="">Debit</label>
+    <input type="text" name="debit2" id="amount_credit_debit" class="amount" />
+    <label for="">Credit</label>
+    <input type="text" name="credit2" id="amount_credit_credit" class="amount" />
+    <input type="button" class="btn btn-primary" onClick="addLog()" value="ADD" />
+  </div>
+</form>
 
-      <br class="container" />
-      <div id="empty">"No log saved yet"</div>
-      <table id="table">
-        <thead>
-          <tr>
-            <th>Transaction date</th>
-            <th>Account code(debit)</th>
-            <th>Account code(credit)</th>
-            <th>Transaction object</th>
-            <th>Debit</th>
-            <th>Credit</th>
-          </tr>
-        </thead>
-        <tbody id="tbody"></tbody>
-      </table>
-      <br />
-      <button class="btn btn-danger clear" onClick="clearJournal()">
-        Clear Accounts
-      </button>
-
-    <script type="module" src="view/log.view.js"></script>
+<br class="container" />
+<div id="empty">"No log saved yet"</div>
+<table id="table">
+  <thead>
+    <tr>
+      <th>Transaction date</th>
+      <th>Account code(debit)</th>
+      <th>Account code(credit)</th>
+      <th>Transaction object</th>
+      <th>Debit</th>
+      <th>Credit</th>
+    </tr>
+  </thead>
+  <tbody id="tbody"></tbody>
+</table>
+<br />
+<button class="btn btn-danger clear" onClick="clearJournal()">
+  Clear Accounts
+</button>
+<script type="module" src="view/log.view.js"></script>

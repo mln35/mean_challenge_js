@@ -1,43 +1,42 @@
-
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="extrastyle.css" />
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="extrastyle.css" />
 <h3 class="sectionTitle">Manage Accounts</h3>
-    <form id ="acount-form">
-      <label for="account-number">Code</label>
-      <input type="text" name="id-account" id="id-account" class="id-account" />
-      <label for="">Label</label>
-      <input type="text" name="account-name" id = "account-name"  class = "account-name"/>
-      <label for="">Class</label>
-      <select class="class" name="class" id="class">
-        <option selected value="null" disabled>Select Class</option>
-        <option value="1 Ressources">1 Ressources</option>
-        <option value="2 Aactif immobilisé">2 Aactif immobilisé </option>
-        <option value="3 Stock">3 Stock</option>
-        <option value="4 Tiers">4 Tiers</option>
-        <option value="5 Fournisseur">5 Fournisseur</option>
-        <option value="6 Charges">6	Charges</option>
-        <option value="7 Produits">7 Produits</option>
-      </select>
-      <input type="button" class="btn btn-primary" onClick="addAccount()" value="ADD">
+<form id="acount-form">
+  <label for="account-number">Code</label>
+  <input type="text" name="id-account" id="id-account" class="id-account" />
+  <label for="">Label</label>
+  <input type="text" name="account-name" id="account-name" class="account-name" />
+  <label for="">Class</label>
+  <select class="class" name="class" id="class">
+    <option selected value="null" disabled>Select Class</option>
+    <option value="1 Ressources">1 Ressources</option>
+    <option value="2 Aactif immobilisé">2 Aactif immobilisé </option>
+    <option value="3 Stock">3 Stock</option>
+    <option value="4 Tiers">4 Tiers</option>
+    <option value="5 Fournisseur">5 Fournisseur</option>
+    <option value="6 Charges">6 Charges</option>
+    <option value="7 Produits">7 Produits</option>
+  </select>
+  <input type="button" class="btn btn-primary" onClick="addAccount()" value="ADD">
 
-    </form>
+</form>
 
-    <br class="container">
-      <div id="empty">No account added yet</div>
-      <table id="table">
-        <thead>
-          <tr>
-            <th>Code</th>
-            <th>Label</th>
-            <th>Class</th>
-          </tr>
-        </thead>
-        <tbody id="tbody">
-         
-        </tbody>
-      </table>
-    <br>
-    <button class = "btn btn-danger clear" onClick = "clearAccounts()"> Clear Accounts</button>
-    </div>
-<script type="module" src="view/account.view.js"></script>     
+<br class="container">
+<div id="empty">No account added yet</div>
+<table id="table">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Label</th>
+      <th>Class</th>
+    </tr>
+  </thead>
+  <tbody id="tbody">
+
+  </tbody>
+</table>
+<br>
+<button class="btn btn-danger clear" onClick="clearAccounts()"> Clear Accounts</button>
+</div>
+<script type="module" src="view/account.view.js"></script>
 <!-- <script src="accounts.js"></script> -->
